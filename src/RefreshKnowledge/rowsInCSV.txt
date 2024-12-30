@@ -1,6 +1,6 @@
-Jenny
-Booooooooob
-Key
-Home
-NewYork 
-kobenhagen
+A,12,3.7
+B,18,1.2
+C,2,2.3
+D,7,8.9
+E
+F,17,3.4
