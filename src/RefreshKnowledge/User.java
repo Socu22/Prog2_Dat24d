@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 class User {
     String name;
@@ -12,7 +14,6 @@ class User {
     int id;
     String id2;
     static int userCounter;
-    static Scanner sc = new Scanner(System.in);
 
     public enum Title {
         Poor, Middle, Rich, CountryRich, WorldRich
@@ -24,7 +25,7 @@ class User {
         this.name = name;
         this.credit = credit;
         titleHandler();
-        complexIdHandler();
+        createUserID();
     }
     public int get_credit() {
         return credit;
@@ -75,15 +76,18 @@ class User {
         Random random = new Random();
         int digets=100+random.nextInt(9000);
 
-        this.id2=firstFour+digets;
+        setId2(firstFour+digets);
 
 
 
     }
-    private void complexIdHandler(){
-        createUserID();
-        System.out.println(validUser());
+
+
+    public void setId2(String id2) {
+        this.id2 = id2;
     }
+
+
 
     @Override
     public String toString() {

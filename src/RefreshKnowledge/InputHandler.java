@@ -2,11 +2,14 @@ package RefreshKnowledge;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class InputHandler {
     public static void main(String[] args) {
@@ -172,6 +175,19 @@ public class InputHandler {
             }
         }
     }
+    // Method to handle LocalTime input with validation
+    public static LocalTime userInputLocalTime(String prompt, String format) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format); // Define time format
+        System.out.print(prompt);
+        while (true) {
+            String input = sc.nextLine(); // Read user input
+            try {
+                return LocalTime.parse(input, formatter); // Parse input to LocalTime
+            } catch (DateTimeParseException e) {
+                System.out.print("Invalid time format. " + prompt); // Re-prompt on invalid input
+            }
+        }
+        }
 
     public static LocalDateTime userInputLocalDateTime(String prompt, String format) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
@@ -187,6 +203,24 @@ public class InputHandler {
 
 
     }
+    public static String userInputMail(String prompt) {
+        Pattern pattern = Pattern.compile("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}");
+        String localMail;
+
+        // First input attempt
+        while (true) {
+            localMail = InputHandler.userInputString(prompt); // e.g., "Input Mail: "
+            Matcher matcher = pattern.matcher(localMail);
+            boolean isValid = matcher.matches();
+
+            if (isValid) {
+                return localMail; // Return the valid email
+            } else {
+                System.out.println("Invalid email. Please try again."); // Optional message for invalid input
+            }
+        }
+    }
+
 
 }
 

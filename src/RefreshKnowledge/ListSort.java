@@ -1,6 +1,7 @@
 package RefreshKnowledge;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
@@ -81,6 +82,11 @@ class Collection {
         listOperations.run();
         System.out.println(syncIntList);
         System.out.println(synIntDividedInTwo);
+
+
+        List<Integer> listOf = List.of(1,2,4,5,3,1,2,3);
+        List<Integer> listArrayListOf = Arrays.asList(1,2,4,5,3,1,2,3);
+
 
 
 
@@ -170,6 +176,11 @@ class StreamClass {
                 Function.identity(), String::length,
                 (e1, e2) -> e1, HashMap::new));
         System.out.println(res);
+
+
+        Stream<String> stringStream = Stream.of("jens", "Bo");
+
+        stringStream.filter(string -> string.startsWith("j")).forEach(System.out::println);
 
 
 
@@ -367,6 +378,9 @@ class SetsAndMaps {
 
 
         //Maps
+        Map<String,String> users= new HashMap<>();
+        users.put("jens","lol123");
+
 
 
 
