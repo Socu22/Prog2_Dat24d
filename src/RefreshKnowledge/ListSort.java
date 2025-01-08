@@ -68,7 +68,35 @@ class Collection {
         System.out.println("Original int list .Shuffled"+integerList);
 
         Collections.sort(integerList);
+
+        integerList.forEach(integer -> {
+            if(integer % 2==0){
+                System.out.println(integer);
+            }
+        });
         System.out.println("Original int list .sort"+integerList); //sort based on natural order
+
+
+        //Arrays
+        int[] intsArr = ListSort.intArray;
+        System.out.println("intsArr before: "+Arrays.toString(intsArr));
+
+
+        for (int x =0; x< intsArr.length/2; x++){ //goes through half the lsit
+            int a = intsArr[x]; // takes the current x element and stores it.
+
+            intsArr[x] = intsArr[intsArr.length-1-x]; //takes what the current length-1-x is and sets it to x's index
+            intsArr[intsArr.length-1-x]= a; //does the reverse with a earlier stores value
+        }
+        System.out.println("intsArr after: "+Arrays.toString(intsArr));
+         intsArr = ListSort.intArray;
+         Arrays.sort(intsArr); //easier
+        System.out.println(Arrays.toString(intsArr));
+
+
+
+
+        //Lists
 
         List<Integer> syncIntList = Collections.synchronizedList(integerList);
         List<Integer> synIntDividedInTwo = new ArrayList<>();
@@ -86,6 +114,18 @@ class Collection {
 
         List<Integer> listOf = List.of(1,2,4,5,3,1,2,3);
         List<Integer> listArrayListOf = Arrays.asList(1,2,4,5,3,1,2,3);
+
+        //Vector
+
+        Vector<Double> vector = new Vector<>();
+        vector.addAll(ListSort.doubleList);
+        vector.add(2.3);
+        vector.addElement(2.33);
+       // vector.removeElementAt(5); // removes at index
+        System.out.println(vector);
+        //List<Double> test = vector.stream().filter(aDouble -> aDouble<4).sorted().collect(Collectors.toList());
+        //System.out.println(test);
+
 
 
 
@@ -181,6 +221,13 @@ class StreamClass {
         Stream<String> stringStream = Stream.of("jens", "Bo");
 
         stringStream.filter(string -> string.startsWith("j")).forEach(System.out::println);
+
+        List<Integer> integerList =ListSort.integerList.stream().filter(integer -> integer % 2==0).collect(Collectors.toList());
+        System.out.println(integerList);
+        integerList=ListSort.integerList;
+
+
+
 
 
 
@@ -380,6 +427,22 @@ class SetsAndMaps {
         //Maps
         Map<String,String> users= new HashMap<>();
         users.put("jens","lol123");
+
+        //searches for unqiue
+        Map<String,Integer> frqMap = new HashMap<>();
+        for(String s: ListSort.fruits){
+            frqMap.put(s,frqMap.getOrDefault(s,0)+1);
+        }
+        int uniqueCount = 0;
+        for(int count: frqMap.values()){
+            if(count==1){
+                uniqueCount++;
+            }
+        }
+        System.out.println("uniquecount: "+uniqueCount);
+
+
+
 
 
 

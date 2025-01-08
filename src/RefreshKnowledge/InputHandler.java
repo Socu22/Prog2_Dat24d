@@ -13,6 +13,24 @@ import java.util.regex.Pattern;
 
 public class InputHandler {
     public static void main(String[] args) {
+        /*LocalDate birthDate = InputHandler.userInputLocalDate("Enter your birth date (dd-MM-yyyy): ", "dd-MM-yyyy");
+        System.out.println("Your birth date is: " + birthDate);
+
+        LocalTime meetingTime = InputHandler.userInputLocalTime("Enter the meeting time (HH:mm): ", "HH:mm");
+        System.out.println("Your meeting time is: " + meetingTime);
+
+        LocalDateTime eventDateTime = InputHandler.userInputLocalDateTime("Enter event date and time (dd-MM-yyyy HH:mm): ", "dd-MM-yyyy HH:mm");
+        System.out.println("Event date and time: " + eventDateTime);
+ */
+        String email = InputHandler.userInputMail("Enter your email: ");
+        System.out.println("Your email is: " + email);
+
+
+
+        /*String phoneNumber = InputHandler.userInputPhoneNumber("Enter your phone number (8 digits): ");
+        System.out.println("Your phone number is: " + phoneNumber);
+
+         */
 
     }
     private static final Scanner sc = new Scanner(System.in);
@@ -220,6 +238,24 @@ public class InputHandler {
             }
         }
     }
+    public static String userInputPhoneNumber(String prompt) {
+        Pattern pattern = Pattern.compile("[0-9]{8}");
+        String localPhoneNumber;
+
+        // First input attempt
+        while (true) {
+            localPhoneNumber = InputHandler.userInputString(prompt); // e.g., "Input Mail: "
+            Matcher matcher = pattern.matcher(localPhoneNumber);
+            boolean isValid = matcher.matches();
+
+            if (isValid) {
+                return localPhoneNumber; // Return the valid email
+            } else {
+                System.out.println("Invalid number. Please try again."); // Optional message for invalid input
+            }
+        }
+    }
+
 
 
 }

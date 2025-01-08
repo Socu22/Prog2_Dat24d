@@ -7,6 +7,9 @@ public class JFrameExample extends JFrame {
     JFrame frame;
     JPanel ActionComponentsPanel;
     JPanel textPanel;
+    JTextField textField;
+    JTextArea textArea;
+    int counter=0;
 
     private static final JFrameExample instance = new JFrameExample("test");
 
@@ -43,25 +46,37 @@ public class JFrameExample extends JFrame {
 
     //adds buttons to a panel
         ActionComponentsPanel = new JPanel();
-        JButton heyButton = new JButton("Click Here!");
-        JButton byeButton = new JButton("Click Here!2");
+        JButton heyButton = new JButton("Click Hey!");
+        JButton byeButton = new JButton("Click Bye");
         ActionComponentsPanel.add(heyButton);
         ActionComponentsPanel.add(byeButton);
 
         //ActionL's to buttons
         heyButton.addActionListener((e)->{
-            JOptionPane.showMessageDialog(frame,"You did it...:->");
+            //JOptionPane.showMessageDialog(frame,"Hey->");
+            counter= Integer.parseInt(JOptionPane.showInputDialog(frame,"x is: ",counter));
+            counter++;
+            textField.setText(String.valueOf(counter));
+
         });
         byeButton.addActionListener((e)->{
-            JOptionPane.showMessageDialog(frame,"You did it.Again..:->");
+            //JOptionPane.showMessageDialog(frame,"Bye->");
+            JOptionPane.showMessageDialog(frame, textArea.getLineCount());
+            textArea.append("\n "+counter);
+
+
         });
 
     //Makes a panel for adding labels as text.
         textPanel= new JPanel();
         JLabel infoLabel = new JLabel("This is label1");
         JLabel testLabel = new JLabel("This is label2");
+        textField= new JTextField(20);
+        textArea= new JTextArea(10,10);
         textPanel.add(infoLabel);
         textPanel.add(testLabel);
+        textPanel.add(textField);
+        textPanel.add(textArea);
 
     //sets everything to the frame;
         frame.setLayout(new BorderLayout());
@@ -71,6 +86,7 @@ public class JFrameExample extends JFrame {
 
     //sets it all visible!!
         frame.setVisible(true);
+
     }
 
     public static void main(String[] args) {

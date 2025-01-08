@@ -2,6 +2,8 @@ package RefreshKnowledge;
 
 public class UserComplex {
     public static void main(String[] args) {
+        UserComplex userComplex =new UserBuilder("1","Jens","Jensen").address("Vej 143").phone("42567854").build();
+        System.out.println(userComplex);
 
     }
     private final String ssn; // required
