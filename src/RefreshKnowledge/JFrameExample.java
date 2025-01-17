@@ -2,6 +2,7 @@ package RefreshKnowledge;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 
 public class JFrameExample extends JFrame {
     JFrame frame;
@@ -33,9 +34,67 @@ public class JFrameExample extends JFrame {
 
         //AddsActionListners to MenuItems
 
-        menuItem1.addActionListener(e-> System.out.println("It works 1"));
-        menuItem2.addActionListener(e-> System.out.println("It works 2"));
-        menuItem3.addActionListener(e-> System.out.println("It works 3"));
+        //weird Cursor and KeyBoard Stuff
+        menuItem1.addActionListener(e-> {
+            Robot robot = null;
+            try {
+                robot = new Robot();
+
+                robot.mouseMove(400, 0);  // Move to (400, 0)
+                Thread.sleep(500);        // Pause for 500 ms
+
+                robot.mouseMove(400, 350);  // Move to (400, 350)
+                Thread.sleep(500);
+
+                robot.mouseMove(200, 350);  // Move to (200, 350)
+                Thread.sleep(500);
+
+                robot.mouseMove(200, 250);  // Move to (200, 250)
+                Thread.sleep(500);
+            } catch (AWTException ex) {
+                throw new RuntimeException(ex);
+            }catch (InterruptedException ex2){
+                throw new RuntimeException();
+            }
+
+            // Move mouse in a square pattern with delays
+
+        });
+        menuItem2.addActionListener(e-> {
+            Robot robot = null;
+            try {
+                robot = new Robot();
+
+                robot.keyPress(KeyEvent.VK_H);
+                robot.keyRelease(KeyEvent.VK_H);
+
+                Thread.sleep(500);
+
+
+                robot.keyPress(KeyEvent.VK_E);
+                robot.keyRelease(KeyEvent.VK_E);
+
+                Thread.sleep(500);
+
+                robot.keyPress(KeyEvent.VK_Y);
+                robot.keyRelease(KeyEvent.VK_Y);
+
+                Thread.sleep(500);
+                System.out.println(robot.getPixelColor(400,400).toString());
+
+
+            } catch (AWTException ex) {
+                throw new RuntimeException(ex);
+            }catch (InterruptedException ex2){
+                throw new RuntimeException();
+            }
+
+        });
+
+
+        menuItem3.addActionListener(e-> {
+
+        });
 
 
         //adds item to a menubar

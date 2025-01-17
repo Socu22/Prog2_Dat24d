@@ -6,6 +6,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -18,12 +19,16 @@ public class InputHandler {
 
         LocalTime meetingTime = InputHandler.userInputLocalTime("Enter the meeting time (HH:mm): ", "HH:mm");
         System.out.println("Your meeting time is: " + meetingTime);
-
+*/
         LocalDateTime eventDateTime = InputHandler.userInputLocalDateTime("Enter event date and time (dd-MM-yyyy HH:mm): ", "dd-MM-yyyy HH:mm");
         System.out.println("Event date and time: " + eventDateTime);
- */
-        String email = InputHandler.userInputMail("Enter your email: ");
+        LocalDateTime localDateTime = LocalDateTime.of(2004,4,23,12,23,2,2);
+
+
+       /* String email = InputHandler.userInputMail("Enter your email: ");
         System.out.println("Your email is: " + email);
+
+        */
 
 
 
@@ -122,6 +127,7 @@ public class InputHandler {
         for (int i = 0; i < size; i++) {
             array[i] = userInputInt("Enter integer for index " + i + ": ");
         }
+
         return array;
     }
 
@@ -143,7 +149,7 @@ public class InputHandler {
         return array;
     }
 
-    // ArrayList Methods
+    // ArrayList Methods, better to use Arrays.asList()
     public static List<Integer> userInputIntArrayList(String prompt, int size) {
         List<Integer> list = new ArrayList<>();
         System.out.println(prompt);
@@ -181,9 +187,10 @@ public class InputHandler {
         return input.equals("y");
     }
 
-    public static LocalDate userInputLocalDate(String prompt, String format) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
-        System.out.print(prompt);
+    public static LocalDate userInputLocalDate(String prompt) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        System.out.print("Enter your birth date (dd-MM-yyyy): ");
+        System.out.print(prompt+"\n");
         while (true) {
             String input = sc.nextLine();
             try {

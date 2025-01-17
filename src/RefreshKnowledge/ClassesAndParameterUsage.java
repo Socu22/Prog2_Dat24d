@@ -20,6 +20,7 @@ public class ClassesAndParameterUsage {
             System.out.println("Works2");
         };
         runnable.run();
+
     }
     public static void sendAtributeWithLambda(){
         //this is a Anonymous method for calling interfaces with one abstract method and nothing else

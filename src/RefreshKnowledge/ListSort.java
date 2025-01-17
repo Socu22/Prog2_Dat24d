@@ -1,7 +1,6 @@
 package RefreshKnowledge;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
@@ -46,20 +45,52 @@ public class ListSort {
             new User("Johnson Jackson",5003),
             new User("Jefferson Bit",50001),
             new User("Rasmus Cookie",50000));
+    static List<String[]> wordArrays = List.of(
+            new String[]{"apple", "banana", "cherry"},
+            new String[]{"banana", "date", "apple"},
+            new String[]{"fig", "grape", "apple"}
+    );
+    static List<FantasyWeapon> fantasyWeapons = Arrays.asList(
+            new FantasyWeapon("Ruby sword", 1, 1100, 5.1, FantasyWeapon.RARITY.COMMON),
+            new FantasyWeapon("Magic sword", 1, 125.2, 2.5, FantasyWeapon.RARITY.RARE),
+            new FantasyWeapon("Light Saber", 1, 110.3, 1, FantasyWeapon.RARITY.LEGENDARY),
+            new FantasyWeapon("Enchanted Axe", 1, 150, 4.8, FantasyWeapon.RARITY.UNCOMMON),
+            new FantasyWeapon("Bronze Dagger", 1, 45.7, 3.2, FantasyWeapon.RARITY.COMMON),
+            new FantasyWeapon("Dragon Slayer", 1, 200, 6.0, FantasyWeapon.RARITY.LEGENDARY),
+            new FantasyWeapon("Silver Bow", 1, 120, 4.5, FantasyWeapon.RARITY.RARE),
+            new FantasyWeapon("Iron Mace", 1, 75, 3.0, FantasyWeapon.RARITY.UNCOMMON),
+            new FantasyWeapon("Warrior's Blade", 1, 195, 4.0, FantasyWeapon.RARITY.COMMON),
+            new FantasyWeapon("Elder Staff", 1, 300, 7.5, FantasyWeapon.RARITY.LEGENDARY),
+            new FantasyWeapon("Shadow Fang", 1, 160, 2.8, FantasyWeapon.RARITY.RARE),
+            new FantasyWeapon("Knight's Shield", 1, 180, 5.5, FantasyWeapon.RARITY.UNCOMMON),
+            new FantasyWeapon("Wooden Club", 1, 120, 1.5, FantasyWeapon.RARITY.COMMON),
+            new FantasyWeapon("Phoenix Blade", 1, 250, 8.0, FantasyWeapon.RARITY.LEGENDARY),
+            new FantasyWeapon("Steel Spear", 1, 150, 3.1, FantasyWeapon.RARITY.UNCOMMON)
+    );
 }
 
 class Collection {
     public static List<User> userList = ListSort.userList;
     public static void main(String[] args) {
-      /* List<User> list= ListSort.userList;
-       list.stream().forEach(x-> System.out.println(x));
 
-       */
-        System.out.println("from p2! \n");
-       // System.out.println(smartSearch());
-        System.out.println();
+       //collectionsMethods();
+
+        arraysAndArraylist();
 
 
+        //Vector
+
+        Vector<Double> vector = new Vector<>();
+        vector.addAll(ListSort.doubleList);
+        vector.add(2.3);
+        vector.addElement(2.33);
+       // vector.removeElementAt(5); // removes at index
+        System.out.println(vector);
+        //List<Double> test = vector.stream().filter(aDouble -> aDouble<4).sorted().collect(Collectors.toList());
+        //System.out.println(test);
+
+    }
+    static void collectionsMethods(){
         List<Integer> integerList = ListSort.integerList;
 
         //Can shuffle places in any child under Collections
@@ -76,7 +107,13 @@ class Collection {
         });
         System.out.println("Original int list .sort"+integerList); //sort based on natural order
 
-
+        Collections.shuffle(integerList);
+        //System.out.println("find max and min values ");
+        System.out.println(integerList);
+        System.out.println("max:"+Collections.max(integerList));
+        System.out.println("Min"+Collections.min(integerList));
+    }
+    static void arraysAndArraylist(){
         //Arrays
         int[] intsArr = ListSort.intArray;
         System.out.println("intsArr before: "+Arrays.toString(intsArr));
@@ -89,16 +126,17 @@ class Collection {
             intsArr[intsArr.length-1-x]= a; //does the reverse with a earlier stores value
         }
         System.out.println("intsArr after: "+Arrays.toString(intsArr));
-         intsArr = ListSort.intArray;
-         Arrays.sort(intsArr); //easier
+        intsArr = ListSort.intArray;
+        Arrays.sort(intsArr); //easier
         System.out.println(Arrays.toString(intsArr));
 
 
 
 
         //Lists
+        System.out.println("List: ");
 
-        List<Integer> syncIntList = Collections.synchronizedList(integerList);
+        List<Integer> syncIntList = Collections.synchronizedList(ListSort.integerList);
         List<Integer> synIntDividedInTwo = new ArrayList<>();
         Runnable listOperations = ()->{
             synchronized (syncIntList){
@@ -115,23 +153,16 @@ class Collection {
         List<Integer> listOf = List.of(1,2,4,5,3,1,2,3);
         List<Integer> listArrayListOf = Arrays.asList(1,2,4,5,3,1,2,3);
 
-        //Vector
+        listOf.forEach(number->{
+            System.out.println(number+" (listOf)");
+        });
 
-        Vector<Double> vector = new Vector<>();
-        vector.addAll(ListSort.doubleList);
-        vector.add(2.3);
-        vector.addElement(2.33);
-       // vector.removeElementAt(5); // removes at index
-        System.out.println(vector);
-        //List<Double> test = vector.stream().filter(aDouble -> aDouble<4).sorted().collect(Collectors.toList());
-        //System.out.println(test);
-
-
-
-
-
-
-
+        List<Integer> noDublicates= new ArrayList<>();// manual method
+        for (Integer element: listOf){
+            if (!noDublicates.contains(element)){ // makes sure that the bollean true is true if the element is not in the listonly contained in the list once
+                noDublicates.add(element);
+            }
+        }
 
 
 
@@ -225,6 +256,12 @@ class StreamClass {
         List<Integer> integerList =ListSort.integerList.stream().filter(integer -> integer % 2==0).collect(Collectors.toList());
         System.out.println(integerList);
         integerList=ListSort.integerList;
+
+        System.out.println(integerList);
+        List<Integer> noDublicates = integerList.stream().distinct().collect(Collectors.toList());//Makes sure there are no dublicates
+        System.out.println(noDublicates);
+
+        List<String> names = ListSort.fruits.stream().filter(string -> string.startsWith("A")).toList();
 
 
 
@@ -323,14 +360,14 @@ class StreamClass {
                 .map(x->x*x)
                 .average()
                 .ifPresent(System.out::println);
-        //7 stram from List, filter and print
+        //7 stream from List, filter and print
         List<String> people = Arrays.asList("Al","Anders","Bob","Jenny","Sophie");
         people
                 .stream()
                 .map(String::toLowerCase)
                 .filter(x->x.startsWith("a"))
                 .forEach(System.out::println);
-        //8 stram rows form text file, sort, filter , and print
+        //8 stream rows form text file, sort, filter , and print
         System.out.println();
         Stream<String> navneord = Files.lines(Paths.get("src\\RefreshKnowledge\\tekstfileExample.txt"));
         navneord
@@ -398,13 +435,19 @@ class SetsAndMaps {
         System.out.println("Integer List: " + ListSort.integerList);
 
 
-        //Set HashSet, makes sure than no dublicates is there, and thewre is no order, or index
+    //Set HashSet, makes sure than no dublicates is there, and thewre is no order, or index
         Set<String> fruitsSet = new HashSet<>(ListSort.fruits);
         Set<Integer> IntegerSet = new HashSet<>(ListSort.integerList);
+
 
         // Printing the Hashsets
         System.out.println("Fruits HashSet: " + fruitsSet);
         System.out.println("Integer HashSet: " + IntegerSet);
+        for (Integer integer : IntegerSet){
+           // System.out.println("Integer HashSet: " + integer); //you can do this.
+        }
+
+
 
         // TreeSet, makes sure than no dublicates is there, sorts by natural order
         fruitsSet = new TreeSet<>(ListSort.fruits);
@@ -414,7 +457,7 @@ class SetsAndMaps {
         System.out.println("Fruits TreeSet: " + fruitsSet);
         System.out.println("Integer TreeSet: " + IntegerSet);
 
-        // TreeSet, makes sure than no dublicates is there, the order is the sma as the order it was send to the set
+        // TreeSet, makes sure than no dublicates is there, the order is the same as the order it was send to the set
         fruitsSet = new LinkedHashSet<>(ListSort.fruits);
         IntegerSet = new LinkedHashSet<>(ListSort.integerList);
 
@@ -429,22 +472,61 @@ class SetsAndMaps {
         users.put("jens","lol123");
 
         //searches for unqiue
-        Map<String,Integer> frqMap = new HashMap<>();
-        for(String s: ListSort.fruits){
-            frqMap.put(s,frqMap.getOrDefault(s,0)+1);
-        }
-        int uniqueCount = 0;
-        for(int count: frqMap.values()){
-            if(count==1){
-                uniqueCount++;
+        Runnable countsUniqueNumbers = ()->{
+            Map<String,Integer> frqMap = new HashMap<>();
+            for(String s: ListSort.fruits){
+                frqMap.put(s,frqMap.getOrDefault(s,0)+1);
             }
-        }
-        System.out.println("uniquecount: "+uniqueCount);
+            int uniqueCount = 0;
+            for(int count: frqMap.values()){
+                if(count==1){
+                    uniqueCount++;
+                }
+            }
+            System.out.println("uniquecount: "+uniqueCount);
+        };
+        countsUniqueNumbers.run();
+
+        Runnable MapsAndEntries =()-> {
+            //Maps used in a smart way
+            Map<String, Integer> studentScores = new HashMap<>();
+            studentScores.put("Alice", 85);
+            studentScores.put("Bob", 76);
+            studentScores.put("Charlie", 92);
+            studentScores.put("Diana", 67);
+            System.out.println("All scores: ");
+            for (Map.Entry<String, Integer> entry : studentScores.entrySet()) {
+                System.out.println("\t" + entry.getKey() + "   " + entry.getValue());
+            }
+            System.out.println("above 80");
+            for (Map.Entry<String, Integer> entry : studentScores.entrySet()) {
+                if (entry.getValue() >= 80) {
+                    System.out.println("\t" + entry.getKey() + "   " + entry.getValue());
+                }
+            }
+            System.out.println("update a value ");
 
 
+            String studentToUpdate = "Bob";
+            if (studentScores.containsKey(studentToUpdate)) {
+                studentScores.put(studentToUpdate, 88); // Update score (here you are certain that this is the student, other methods is possible, like remove)
+                System.out.println("\nUpdated " + studentToUpdate + "'s score to " + studentScores.get(studentToUpdate));
+            } else {
+                System.out.println("\nStudent " + studentToUpdate + " not found.");
+            }
+            System.out.println(studentScores.get("Bob"));
+        };
+
+        List<String[]> listAndMapsAndSPlit = ListSort.userList.stream().map(user -> user.getName().split(" ")).toList();
+        listAndMapsAndSPlit.forEach(array-> System.out.println(Arrays.toString(array)));
 
 
-
+        //Flatmaps
+        ListSort.wordArrays.forEach(array->{
+            System.out.println(Arrays.toString(array));
+        });
+        List<String> ListOfArraysFlattendToOneStream = (List<String>) ListSort.wordArrays.stream().flatMap(Arrays::stream).distinct().toList();
+        System.out.println(ListOfArraysFlattendToOneStream);
 
 
         //
@@ -455,10 +537,27 @@ class SetsAndMaps {
 }
 
 
+
 //this show the Comparators way of sorting items
 class ComparatorLogic {
     public static void main(String[] args) {
+        _Comparator();
 
+        Comparable<String> stringComparable; //Comparable is something that compares specific values for example it could be User.name, it will try to make some kind of sorting when it does that, a Comparator uses this to its advandgede in Collections and Arrays.sort or List.sort. but many times comparable is equal to the .equals but that one compares the whole thing rather that one value that it is the same, especially when working with objects.
+        Runnable runnable = ()->{
+            //-1 means: user1 is less than user2, 1 means: user1 is more than user2, 0 means that the 2 objects are comparable to each other. (Needs implementation of Comparable<User> to work)
+            List<User> users = ListSort.userList;
+            User user1 = users.get(0);
+            User user2 = users.get(1);
+            System.out.println(user1.compareTo(user2));
+        };
+        runnable.run();
+
+
+
+
+    }
+    static void _Comparator(){
         System.out.println(ListSort.fishList);
         ListSort.fishList.sort(Comparator.comparingInt(Fish::getFins).thenComparing(Fish::getColor));
         System.out.println(ListSort.fishList);
@@ -487,7 +586,6 @@ class ComparatorLogic {
         integerList = integerArrayList; //checks if it can be sent back
         System.out.println(integerList); //Check
 
-        //Tries with Sykronised
         List<String> stringLisT = new ArrayList<>();
         stringLisT.add("AC");//Bigger hashcode value than singe Char
         stringLisT.add("D");
@@ -500,10 +598,14 @@ class ComparatorLogic {
         synList.sort(Comparator.comparingInt(String::hashCode));
         System.out.println("SynList: " + synList);
 
-
-
+        System.out.println("Fantasywepons ");
+        System.out.println(ListSort.fantasyWeapons);
+        List<FantasyWeapon> fantasyWeapons = ListSort.fantasyWeapons;
+        Collections.sort(fantasyWeapons, Comparator.comparing(FantasyWeapon::getDamagePSec).thenComparing(FantasyWeapon::getRarityValue)); //finds out that it is only when the First Comparing is equal to each other that the .thenComparing take priority
+        fantasyWeapons.forEach(x-> System.out.println(x));
 
     }
+
 
 }
 

@@ -11,6 +11,7 @@ public class Enums {
         System.out.println(test);
         logic(1);
 
+
     }
     enum test{
         One,Two,Three
@@ -42,5 +43,9 @@ public class Enums {
 
 
     }
+    static void logic2(){
+
+    }
 
 }
+
