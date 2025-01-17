@@ -47,14 +47,6 @@ class FantasyWeapon extends Item {
     double pSec;
     double damagePSec;
     RARITY rarity;
-
-    public FantasyWeapon(String name,int amount,double damage, double pSec,RARITY rarity) {
-        super(name,amount);
-        this.damage = damage;
-        this.pSec = pSec;
-        this.damagePSec= damage/pSec;
-        this.rarity=rarity;
-    }
     enum RARITY{
         COMMON(1), UNCOMMON(2), RARE(3), LEGENDARY(4);
         private final int value;
@@ -67,6 +59,14 @@ class FantasyWeapon extends Item {
             return value;
         }
     }
+    public FantasyWeapon(String name,int amount,double damage, double pSec,RARITY rarity) {
+        super(name,amount);
+        this.damage = damage;
+        this.pSec = pSec;
+        this.damagePSec= damage/pSec;
+        this.rarity=rarity;
+    }
+
 
     public double getDamagePSec() {
         return damagePSec;
