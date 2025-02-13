@@ -9,23 +9,27 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class ListSort {
-    static List<String> stringList = Arrays.asList("Jef", "Jonas", "Peter", "Bob");
-    static List<String> fruits = Arrays.asList(
+    static List<String> stringList = new ArrayList<>(Arrays.asList("Jef", "Jonas", "Peter", "Bob"));
+    static List<String> fruits = new ArrayList<>(Arrays.asList(
             "Cherry",
             "Dragonfruit",
             "Elderberry",
             "Elderberry",
             "Apple",
             "Banana",
-            "Cherry");
-    static List<Integer> integerList = Arrays.asList(2, 6, 3, 1, 9, 77, 6, 3, 5, 6, 8, 0, 9);
-    static List<Double> doubleList = Arrays.asList(2.3, 6.3, 3.3, 1.7, 9.7, 77.9, 6.0, 3.9, 5.8, 6.1, 8.2, 0.0, 9.3);
-    static List<Float> floatList = Arrays.asList(1.2f, 3.4f, 5.6f, 7.8f, 9.0f, 2.2f, 4.4f, 6.6f);
-    static List<Long> longList = Arrays.asList(100L, 200L, 300L, 400L, 500L, 600L, 700L);
-    static List<Short> shortList = Arrays.asList((short) 1, (short) 2, (short) 3, (short) 4, (short) 5);
-    static List<Byte> byteList = Arrays.asList((byte) 10, (byte) 20, (byte) 30, (byte) 40, (byte) 50);
-    static List<Boolean> booleanList = Arrays.asList(true, false, true, false, true);
+            "Cherry"));
+    static List<Integer> integerList = new ArrayList<>(Arrays.asList(2, 6, 3, 1, 9, 77, 6, 3, 5, 6, 8, 0, 9));
+    static List<Double> doubleList = new ArrayList<>(Arrays.asList(2.3, 6.3, 3.3, 1.7, 9.7, 77.9, 6.0, 3.9, 5.8, 6.1, 8.2, 0.0, 9.3));
+    static List<Float> floatList = new ArrayList<>(Arrays.asList(1.2f, 3.4f, 5.6f, 7.8f, 9.0f, 2.2f, 4.4f, 6.6f));
+    static List<Long> longList = new ArrayList<>(Arrays.asList(100L, 200L, 300L, 400L, 500L, 600L, 700L));
+    static List<Short> shortList = new ArrayList<>(Arrays.asList((short) 1, (short) 2, (short) 3, (short) 4, (short) 5));
+    static List<Byte> byteList = new ArrayList<>(Arrays.asList((byte) 10, (byte) 20, (byte) 30, (byte) 40, (byte) 50));
+    static List<Boolean> booleanList = new ArrayList<>(Arrays.asList(true, false, true, false, true));
 
     static int[] intArray = {10, 20, 30, 40, 50, 60, 70, 80, 90, 100};
     static double[] doubleArray = {1.1, 2.2, 3.3, 4.4, 5.5, 6.6, 7.7, 8.8, 9.9};
@@ -35,22 +39,22 @@ public class ListSort {
     static byte[] byteArray = {(byte) 5, (byte) 15, (byte) 25, (byte) 35, (byte) 45};
     static boolean[] booleanArray = {false, true, false, true, false};
 
-    static List<Fish> fishList = Arrays.asList(new Fish(2, 3, "Starlike"),
+    static List<Fish> fishList = new ArrayList<>(Arrays.asList(
+            new Fish(2, 3, "Starlike"),
             new Fish(2, 5, "Blue"),
-            new Fish(7, 7, "Red"));
-    static List<User> userList = Arrays.asList(
-            new User("Jens Vej",50),
-            new User("Bob Ko",500),
-            new User("Thomas Pus",5000),
-            new User("Johnson Jackson",5003),
-            new User("Jefferson Bit",50001),
-            new User("Rasmus Cookie",50000));
-    static List<String[]> wordArrays = List.of(
+            new Fish(7, 7, "Red")));
+    static List<User> userList = new ArrayList<>(Arrays.asList(
+            new User("Jens Vej", 50),
+            new User("Bob Ko", 500),
+            new User("Thomas Pus", 5000),
+            new User("Johnson Jackson", 5003),
+            new User("Jefferson Bit", 50001),
+            new User("Rasmus Cookie", 50000)));
+    static List<String[]> wordArrays = new ArrayList<>(List.of(
             new String[]{"apple", "banana", "cherry"},
             new String[]{"banana", "date", "apple"},
-            new String[]{"fig", "grape", "apple"}
-    );
-    static List<FantasyWeapon> fantasyWeapons = Arrays.asList(
+            new String[]{"fig", "grape", "apple"}));
+    static List<FantasyWeapon> fantasyWeapons = new ArrayList<>(Arrays.asList(
             new FantasyWeapon("Ruby sword", 1, 1100, 5.1, FantasyWeapon.RARITY.COMMON),
             new FantasyWeapon("Magic sword", 1, 125.2, 2.5, FantasyWeapon.RARITY.RARE),
             new FantasyWeapon("Light Saber", 1, 110.3, 1, FantasyWeapon.RARITY.LEGENDARY),
@@ -66,16 +70,16 @@ public class ListSort {
             new FantasyWeapon("Wooden Club", 1, 120, 1.5, FantasyWeapon.RARITY.COMMON),
             new FantasyWeapon("Phoenix Blade", 1, 250, 8.0, FantasyWeapon.RARITY.LEGENDARY),
             new FantasyWeapon("Steel Spear", 1, 150, 3.1, FantasyWeapon.RARITY.UNCOMMON)
-    );
+    ));
 }
 
 class Collection {
     public static List<User> userList = ListSort.userList;
     public static void main(String[] args) {
 
-       //collectionsMethods();
+       collectionsMethods();
 
-        arraysAndArraylist();
+      /*  arraysAndArraylist();
 
 
         //Vector
@@ -88,6 +92,8 @@ class Collection {
         System.out.println(vector);
         //List<Double> test = vector.stream().filter(aDouble -> aDouble<4).sorted().collect(Collectors.toList());
         //System.out.println(test);
+
+       */
 
     }
     static void collectionsMethods(){
@@ -112,7 +118,31 @@ class Collection {
         System.out.println(integerList);
         System.out.println("max:"+Collections.max(integerList));
         System.out.println("Min"+Collections.min(integerList));
+        System.out.println();
+
+        System.out.println(integerList);
+        Collections.swap(integerList,0,4);
+        System.out.println(integerList);
+
+        Runnable CDot_swap = ()->{
+                List<String> sortedList = new ArrayList<>(ListSort.stringList);
+            System.out.println("before "+sortedList);// Copy input list
+            int length = sortedList.size();
+
+                for (int i = 0; i < length - 1; i++) {
+                    int minIndex = i;
+                    for (int j = i + 1; j < length; j++) {
+                        if (sortedList.get(j).compareTo(sortedList.get(minIndex)) < 0) {
+                            minIndex = j;
+                        }
+                    }
+                    // Swap elements
+                    Collections.swap(sortedList, i, minIndex);
+                }
+            System.out.println("After "+sortedList);
+        };
     }
+
     static void arraysAndArraylist(){
         //Arrays
         int[] intsArr = ListSort.intArray;
@@ -168,8 +198,9 @@ class Collection {
 
     }
 
+
 //userSearcherFromSecondProject
-    //Search by partial or full name
+    //Z_Onsdag.Search by partial or full name
     static User searchByName(String name) throws RuntimeException {
         ArrayList<User> foundList = new ArrayList<>();
         System.out.println("Indtast navn: ");
@@ -426,6 +457,15 @@ class StreamClass {
 
 class SetsAndMaps {
     public static void main(String[] args) {
+
+
+
+        //
+
+
+
+    }
+    static void sets(){
         System.out.println(ListSort.fishList);
         System.out.println(ListSort.integerList);
 
@@ -435,7 +475,7 @@ class SetsAndMaps {
         System.out.println("Integer List: " + ListSort.integerList);
 
 
-    //Set HashSet, makes sure than no dublicates is there, and thewre is no order, or index
+        //Set HashSet, makes sure than no dublicates is there, and thewre is no order, or index
         Set<String> fruitsSet = new HashSet<>(ListSort.fruits);
         Set<Integer> IntegerSet = new HashSet<>(ListSort.integerList);
 
@@ -444,7 +484,7 @@ class SetsAndMaps {
         System.out.println("Fruits HashSet: " + fruitsSet);
         System.out.println("Integer HashSet: " + IntegerSet);
         for (Integer integer : IntegerSet){
-           // System.out.println("Integer HashSet: " + integer); //you can do this.
+            // System.out.println("Integer HashSet: " + integer); //you can do this.
         }
 
 
@@ -466,7 +506,8 @@ class SetsAndMaps {
         System.out.println("Integer LinkedHashSet: " + IntegerSet);
 
 
-
+    }
+    static void maps(){
         //Maps
         Map<String,String> users= new HashMap<>();
         users.put("jens","lol123");
@@ -529,10 +570,6 @@ class SetsAndMaps {
         System.out.println(ListOfArraysFlattendToOneStream);
 
 
-        //
-
-
-
     }
 }
 
@@ -552,6 +589,10 @@ class ComparatorLogic {
             System.out.println(user1.compareTo(user2));
         };
         runnable.run();
+        List<String> stringList = ListSort.stringList;
+        System.out.println(stringList);
+        stringList.sort(Comparator.naturalOrder());
+        System.out.println(stringList);
 
 
 
@@ -577,7 +618,7 @@ class ComparatorLogic {
         System.out.println(integerList.size());
         integerList.sort(Comparator.comparing(Integer::intValue)); //sort arcording to Integer Objects values
         System.out.println(integerList);
-        //Adds List of Arrays as a list to an Arraylist
+        //Adds List of Arrays as a list to an Z_Onsdag.Arraylist
         ArrayList<Integer> integerArrayList = new ArrayList<>(integerList);
         integerArrayList.add(3); //uses .add which can be used in a ArrayList as Colections.add is overwrite'd correctly
         integerArrayList.sort(Comparator.comparing(Integer::intValue)); //again
