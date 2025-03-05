@@ -27,11 +27,13 @@ public class Primtal extends Thread {
 
         while (r){
             x++;
+
             try {
-                Thread.sleep(10);
+                sleep(10);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
+
             if(isPrime(x)){
                 intList.add(x);
             }
