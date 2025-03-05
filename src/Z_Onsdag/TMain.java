@@ -1,3 +1,5 @@
+package Z_Onsdag;
+
 public class TMain extends Thread {
     public static int amount = 0;
 

@@ -1,9 +1,11 @@
+package Z_Onsdag;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class BankAppSynchronized {
     public static void main(String[] args) {
-        Account a1 = new Account("Account", 1.5);
+        Account a1 = new Account("Z_Onsdag.Account", 1.5);
         Customer c1 = new Customer(a1);
         Customer c2 = new Customer(a1);
         c1.start();
@@ -55,7 +57,7 @@ class Account {
 
     }
 
-   /* Account(String ow, int acc, double rate) {
+   /* Z_Onsdag.Account(String ow, int acc, double rate) {
         accountNo = acc;
         owner = ow;
         intRate = rate;

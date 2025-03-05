@@ -1,3 +1,4 @@
+package Z_Onsdag;
 
 import java.io.*;
 import java.util.HashMap;
@@ -13,7 +14,7 @@ public class TelenfonListe {
 }
 
 class Main {
-    static String file = "src" + File.separator + "TelenfonListe.txt" + File.separator;
+    static String file = "src" + File.separator + "Z_Onsdag" + File.separator+ "TelenfonListe.txt" + File.separator;
     static Scanner scanner = new Scanner(System.in);
     static int action;
     static boolean isrunning = true;

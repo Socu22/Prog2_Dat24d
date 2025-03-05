@@ -262,6 +262,17 @@ public class InputHandler {
             }
         }
     }
+    public static boolean isPrime(int number) {
+        if (number <= 1) {
+            return false; // 0 and 1 are not prime numbers
+        }
+        for (int i = 2; i <= Math.sqrt(number); i++) {
+            if (number % i == 0) {
+                return false; // If divisible by any number other than 1 and itself
+            }
+        }
+        return true; // If not divisible, it's a prime number
+    }
 
 
 

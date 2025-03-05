@@ -1,5 +1,5 @@
-import javax.swing.*;
-import java.awt.*;
+package Z_Onsdag;
+
 import java.util.Scanner;
 
 public class SyvtabelMain extends Thread {

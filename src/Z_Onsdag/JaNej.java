@@ -1,4 +1,4 @@
-import javax.swing.*;
+package Z_Onsdag;
 
 public class JaNej extends Thread {
     public static void main(String[] args) {

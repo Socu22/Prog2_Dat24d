@@ -1,3 +1,7 @@
+package Z_Onsdag;
+
+import RefreshKnowledge.InputHandler;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -34,21 +38,11 @@ public class Primtal extends Thread {
                 throw new RuntimeException(e);
             }
 
-            if(isPrime(x)){
+            if(InputHandler.isPrime(x)){
                 intList.add(x);
             }
 
         }
     }
-    public static boolean isPrime(int number) {
-        if (number <= 1) {
-            return false; // 0 and 1 are not prime numbers
-        }
-        for (int i = 2; i <= Math.sqrt(number); i++) {
-            if (number % i == 0) {
-                return false; // If divisible by any number other than 1 and itself
-            }
-        }
-        return true; // If not divisible, it's a prime number
-    }
+
 }
