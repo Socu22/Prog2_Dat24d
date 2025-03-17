@@ -5,6 +5,7 @@ package RefreshKnowledge;
 import MyProjects.Enemy;
 import MyProjects.Player;
 
+import java.util.Objects;
 import java.util.SplittableRandom;
 import java.util.random.RandomGenerator;
 
@@ -227,4 +228,66 @@ public class Creature {
     }
 }
 
+@VeryInportant
+class Cat {
+    @ImportantString
+    private final String name;
+    private int age;
+
+    public Cat(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void eat() {
+        System.out.println("Munch");
+
+    }
+    @RunNow(times = 5)
+
+    public void sayMeow(){
+        System.out.println("Meow!");
+    }
+    private void sayAHiddenMeow(){
+        System.out.println("Meow!(silently)");
+    }
+    public static void pus(){
+        System.out.println("pus: Yikes");
+    }
+    private static void prs(){
+        System.out.println("prs ouch");
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Cat cat)) return false;
+        return getAge() == cat.getAge() && Objects.equals(getName(), cat.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(), getAge());
+    }
+
+    @Override
+    public String toString() {
+        return "Cat{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
+}
 
